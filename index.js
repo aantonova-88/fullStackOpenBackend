@@ -1,7 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const morgan = require("morgan");
 const app = express();
+
 app.use(express.json());
+const corsOptions = {
+  origin: "http://localhost:5173",
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 morgan.token("person", function (req) {
   return JSON.stringify(req.body);
